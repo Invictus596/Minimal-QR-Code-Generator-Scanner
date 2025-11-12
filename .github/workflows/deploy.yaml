@@ -30,13 +30,18 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
-      # IMPORTANT: This step uploads the content of the "frontend/public" folder 
-      # as the deployable artifact.
-      - name: Upload artifact from public directory
+      - name: Install dependencies
+        run: npm install
+        working-directory: ./frontend
+
+      - name: Build
+        run: npm run build
+        working-directory: ./frontend
+
+      - name- Upload artifact from build directory
         uses: actions/upload-pages-artifact@v3
         with:
-          # The path now points correctly to the folder containing index.html
-          path: './frontend/public'
+          path: './frontend/build'
 
       - name: Deploy to GitHub Pages
         id: deployment
