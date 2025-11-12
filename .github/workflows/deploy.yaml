@@ -38,7 +38,7 @@ jobs:
         run: npm run build
         working-directory: ./frontend
 
-      - name- Upload artifact from build directory
+      - name: Upload artifact from build directory
         uses: actions/upload-pages-artifact@v3
         with:
           path: './frontend/build'
