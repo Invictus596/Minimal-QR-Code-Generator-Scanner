@@ -38,6 +38,9 @@ jobs:
         run: npm run build
         working-directory: ./frontend
 
+      - name: Create CNAME file
+        run: echo "www.qrcodeinvictus.io" > ./frontend/build/CNAME
+
       - name: Upload artifact from build directory
         uses: actions/upload-pages-artifact@v3
         with:
