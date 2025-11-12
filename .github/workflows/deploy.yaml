@@ -1,0 +1,43 @@
+name: Deploy QR Tool to GitHub Pages
+
+on:
+  # Triggers the workflow on pushes to the specified branch
+  push:
+    branches: ["feat/qr-code-scanner"] 
+  
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Sets the GITHUB_TOKEN permissions required to deploy to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # This step configures the GitHub Pages environment
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      # IMPORTANT: This step uploads the content of the "frontend/public" folder 
+      # as the deployable artifact.
+      - name: Upload artifact from public directory
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # The path now points correctly to the folder containing index.html
+          path: './frontend/public'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
