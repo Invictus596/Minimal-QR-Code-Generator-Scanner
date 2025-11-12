@@ -1,7 +1,7 @@
 {
   "name": "qr-code-app",
   "version": "1.0.0",
-  "homepage": "https://Invictus596.github.io/Minimal-QR-Code-Generator-Scanner",
+  "homepage": "/Minimal-QR-Code-Generator-Scanner",
   "private": true,
   "scripts": {
     "start": "react-scripts start",
